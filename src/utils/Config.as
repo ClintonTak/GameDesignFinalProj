@@ -23,7 +23,7 @@ package utils
 		
 		public static function loadConfig():void{
 			var loader:URLLoader = new URLLoader(); 
-			var url:URLRequest = new URLRequest("settings.xml");
+			var url:URLRequest = new URLRequest("./assets/settings.xml");
 			
 			loader.addEventListener(Event.COMPLETE, Config.completeHandler, false, 0, true); 
 			loader.addEventListener(Event.OPEN, Config.openHandler, false, 0, true);
@@ -104,7 +104,7 @@ package utils
 			if (_cache[nodeKey] !== undefined){
 				return _cache[nodeKey];
 			}
-			
+			trace(nodeKey); 
 			var values:XMLList = Config._data[node].attribute(key); 
 			if (values.length() != 1){
 				trace("Warning: no attribute '" + key + "' for tag '" +node+"'."); 
@@ -128,6 +128,7 @@ package utils
 		}
 		
 		public static function getColor(attribute:String, node:String = ""):uint{
+			trace("getcolor"); 
 			return parseInt(getSetting(attribute, node), 16); 
 		}
 	}

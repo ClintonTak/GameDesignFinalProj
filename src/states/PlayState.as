@@ -84,8 +84,7 @@ package states
 		
 		private function drawScreen():void
 		{
-			var bg:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: 420, height: 420});
-			//bg.view = new Image(assets.getTexture("bg.png"));
+			var bg:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: 400, height: 680});
 			bg.view = Assets.getImage("fbBackground");
 			add(bg);
 			

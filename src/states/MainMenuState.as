@@ -1,73 +1,60 @@
-package states 
-{
+package states{
+	import flash.display.Bitmap;
+	import starling.textures.Texture;
 	import states.InstructionState;
 	import states.PlayState;
 	import citrus.core.CitrusEngine; 
 	import citrus.core.starling.StarlingState;
 	import starling.text.TextField;
 	import Assets;
-	//import feathers.controls.Label;
-	//import ui.Label;
-	import flash.events.MouseEvent;
 	import utils.Config;
-	//import flash.display.SimpleButton;
 	import starling.display.Button;
-	//import flash.text.TextFormat;
-	//import flash.text.FontStyle;
+	import starling.events.Event;
+	import citrus.objects.CitrusSprite;
 	
-	
-	public class MainMenuState extends StarlingState
-	{
-		//private var _gameTitle:Label = new Label ("Flappy Bird!", 124, Config.getColor("limegreen", "color") , Config.getSetting("font", "settings"), true); 
-		
-		/*private var _playButton:Button = new Button(Assets.getImage("play"), 
-							Assets.getImage("playhover"), Assets.getImage("playhover"), Assets.getImage("play")); 
-		private var _instructionButton:Button = new Button(Assets.getImage("instructions"), 
-							Assets.getImage("instructionshover"), Assets.getImage("instructionshover"), Assets.getImage("instructions")); 
-							*/
-		public function MainMenuState() 
-		{
+	public class MainMenuState extends StarlingState{
+		public function MainMenuState(){
 			super(); 
 		}
 		
 		override public function initialize():void{
 			super.initialize(); 
-			var textField:TextField;
-			textField = new TextField(200, 200, "CLICK TO FLY", "Flappy", 20, 0x123456);
-			textField.x = 200;
-			textField.y = 200;
+			
+			var bg:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: 400, height: 680});
+			bg.view = Assets.getImage("fbBackground");
+			add(bg);
+			
+			var gameTitle:TextField;
+			gameTitle = new TextField(200, 200, "Flappy Bird", "ChunkFive", 40, 0xA0FF52);
+			gameTitle.x = 200 - gameTitle.width*.5;
+			gameTitle.y = 340 - 350;
 			trace("landed");
-			addChild(textField);
+			addChild(gameTitle);
 			
-			//var label:Label = new Label(); 
-			//label.text = "test"; 
-			//this.addChild(label); 
-			//trace(utils.Config.getNumber("center_x", "world"));
-			//label. = new TextFormat( "Helvetica", 20, 0x3c3c3c );
-			//label.x = 200 - label.width/2; 
-			//label.y = 340 - 100; 
+			var playBtnUpTexture:Texture = Texture.fromBitmap(Assets.getImage("play")); 
+			var playBtnDownTexture:Texture = Texture.fromBitmap(Assets.getImage("playhover")); 
+			var playButton:Button = new Button(playBtnUpTexture, "", playBtnDownTexture, playBtnDownTexture);
+			playButton.x = 200 - playButton.width * .5; 
+			playButton.y = gameTitle.y + playButton.height; 
+			playButton.addEventListener(Event.TRIGGERED, onClickPlay); 
+			addChild(playButton); 
 			
-			
-			/*addChild(_playButton);
-			_playButton.x = Config.getNumber("center_x", "world") - _playButton.width * .5; 
-			_playButton.y = _gameTitle.y + _gameTitle.textHeight + 100;
-			_playButton.addEventListener(MouseEvent.CLICK, onClickPlay); 
-			
-			addChild(_instructionButton); 
-			_instructionButton.x = Config.getNumber("center_x", "world") - _instructionButton.width * .5; 
-			_instructionButton.y = _playButton.y + _playButton.height; 
-			_instructionButton.width = _instructionButton.width ; 
-			_instructionButton.addEventListener(MouseEvent.CLICK, onClickInstruction); 
-		*/
+			var instructionBtnUpTexture:Texture = Texture.fromBitmap(Assets.getImage("instructions"));
+			var instructionBtnDownTexture:Texture = Texture.fromBitmap(Assets.getImage("instructionshover")); 
+			var instructionButton:Button = new Button(instructionBtnUpTexture, "", instructionBtnDownTexture, instructionBtnDownTexture); 
+			instructionButton.scale = .55;
+			instructionButton.x = 200 - instructionButton.width * .5; 
+			instructionButton.y = playButton.y + instructionButton.height + 150; 
+			instructionButton.addEventListener(Event.TRIGGERED, onClickInstruction);
+			addChild(instructionButton); 
 		}
 		
-		public function onClickPlay(e:MouseEvent):void {
+		public function onClickPlay(e:Event):void{
 			CitrusEngine.getInstance().state = new PlayState();
 		}
 		
-		public function onClickInstruction(e:MouseEvent):void{
+		public function onClickInstruction(e:Event):void{ 
 			CitrusEngine.getInstance().state = new InstructionState();
-		}
+		}	
 	}
-
 }

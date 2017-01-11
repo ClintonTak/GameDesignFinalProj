@@ -23,18 +23,15 @@ package
 		public static const smack:Class;
 		
 		// font
-		[Embed(source="assets/flappybird.ttf", embedAsCFF="false", fontFamily="Flappy")]
-        public static const Flappy:Class;
-		//[Embed(source = "assets/Chunkfive.otf",fontName = "ChunkFive", mimeType = "application/x-font",
-		//	unicodeRange = "U+0021-U+005a, U+005c-U+005f, U+0061-U+007d", advancedAntiAliasing = "true", embedAsCFF = "false")]
-		//public var ChunkFiveClass:Class; 
+		[Embed(source = "assets/fonts/ChunkFive.otf", embedAsCFF = "false", fontFamily = "ChunkFive")]
+		public static const ChunkFive:Class; 
 		
 		// new stuff
 		[Embed(source = "assets/images/BotPipe.png")]
 		public static const BotPipe:Class;
 		[Embed(source = "assets/images/TopPipe.png")]
 		public static const TopPipe:Class;
-		[Embed(source = "assets/images/fb.png")]
+		[Embed(source = "assets/images/titlescreen.png")]
 		public static const FBBackground:Class; 
 		[Embed(source = "assets/images/PlayButton.png")]
 		private static const PlayButton:Class;
