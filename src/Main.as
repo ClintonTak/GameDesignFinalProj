@@ -24,32 +24,14 @@ package {
 		override public function initialize():void {
 			setUpStarling(true);
 		}
-		//starling is ready, we can load assets
+		
+		
 		override public function handleStarlingReady():void
 		{
-			//state = new states.PlayState( );
-			state = new PlayState(); 
-			//changeState(MENU_STATE); 
+			state = new MainMenuState();
+			//state = new PlayState(); 
+			
 		}
-		
-		/*public function changeState(nextState:Number):void{
-			if (_currentState != null) {
-				_currentState.destroy(); 
-				removeChild(StarlingCitrusEngine(_currentState));
-				_currentState = null; 
-			}
-			if (nextState == PLAY_STATE){
-				_currentState = new PlayState(this);
-			}else if (nextState == MENU_STATE){
-				_currentState = new MainMenuState(this); 
-			}else if (nextState == INSTRUCTION_STATE){
-				_currentState = new InstructionState(this); 
-			}else if (nextState == GAME_OVER_STATE){
-				_currentState = new GameOverState(this); 
-			}
-			addChild(Sprite(_currentState));
-		}
-			*/
 	}
 }
 

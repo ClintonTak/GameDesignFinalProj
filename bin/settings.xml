@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<asteroidgame>
+<flappyBird>
 	<settings entity_color = "0xFFFFFF" line_size = "2" font = "Chunkfive" />
 	<color black = "0x000000" white = "0xFFFFFF" red = "0xFF0000" green = "0x00FF00" blue = "0x0000FF" grey = "0xA9A9A9" limegreen = "0xA0FF52" />
-	<world height = "720" width = "1280" center_x = "640" center_y = "360" line_size = "2" />
+	<world height = "640" width = "400" center_x = "200" center_y = "320" line_size = "2" />
 	<bird height = "20" width = "20" time_between_jumps = "5" ></bird>
-	
-</asteroidgame>	
+</flappyBird>	
