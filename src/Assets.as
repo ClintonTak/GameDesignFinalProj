@@ -1,6 +1,7 @@
 package 
 {
 	import flash.display.Bitmap;
+	import starling.textures.Texture;
 	public class Assets
 	{
 		
@@ -27,7 +28,7 @@ package
 		public static const ChunkFive:Class; 
 		
 		// new stuff
-		[Embed(source = "assets/images/BotPipe.png")]
+		[Embed(source = "assets/images/fbpipesprite.png")]
 		public static const BotPipe:Class;
 		[Embed(source = "assets/images/TopPipe.png")]
 		public static const TopPipe:Class;
@@ -43,11 +44,11 @@ package
 		private static const InstructionsButtonHover:Class;
 		[Embed(source = "assets/images/BackButton.png")]
 		private static const BackButton:Class;
-		[Embed(source = "assets/images/bird.png")]
-		public static const ButtonNormal:Class; 
+		[Embed(source = "assets/images/fpsprite.png")]
+		public static const Bird:Class; 
 		
 		public static function getImage(n:String):Bitmap{
-			var imgClass:Class = ButtonNormal; 
+			var imgClass:Class = Bird; 
 			if (n == "botPipe"){
 				imgClass = BotPipe;
 			} else if (n == "topPipe"){
@@ -55,7 +56,7 @@ package
 			} else if ( n == "fbBackground"){
 				imgClass = FBBackground; 
 			} else if (n == "bird"){
-				imgClass = ButtonNormal;
+				imgClass = Bird;
 			} else if (n == "play"){
 				imgClass = PlayButton;
 			} else if (n == "instructions"){
@@ -70,6 +71,5 @@ package
 			return new imgClass() as Bitmap;
 			
 		}
-		
 	}
 }
