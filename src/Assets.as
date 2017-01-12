@@ -28,10 +28,10 @@ package
 		public static const ChunkFive:Class; 
 		
 		// new stuff
-		[Embed(source = "assets/images/fbpipesprite.png")]
-		public static const BotPipe:Class;
-		[Embed(source = "assets/images/TopPipe.png")]
-		public static const TopPipe:Class;
+		[Embed(source = "assets/images/botWall.png")]
+		public static const BotWall:Class;
+		[Embed(source = "assets/images/topWall.png")]
+		public static const TopWall:Class;
 		[Embed(source = "assets/images/titlescreen.png")]
 		public static const FBBackground:Class; 
 		[Embed(source = "assets/images/PlayButton.png")]
@@ -49,10 +49,10 @@ package
 		
 		public static function getImage(n:String):Bitmap{
 			var imgClass:Class = Bird; 
-			if (n == "botPipe"){
-				imgClass = BotPipe;
-			} else if (n == "topPipe"){
-				imgClass = TopPipe; 
+			if (n == "botwall"){
+				imgClass = BotWall;
+			} else if (n == "topwall"){
+				imgClass = TopWall; 
 			} else if ( n == "fbBackground"){
 				imgClass = FBBackground; 
 			} else if (n == "bird"){

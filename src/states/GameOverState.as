@@ -9,6 +9,7 @@ package states
 	import starling.events.Event;
 	import starling.textures.Texture;
 	import citrus.core.CitrusEngine;
+	import utils.Config;
 	public class GameOverState extends StarlingState{
 		private var _background:CitrusSprite; 
 		private var _gameOver:TextField;
@@ -35,13 +36,13 @@ package states
 			
 			
 			_score = new TextField(300, 300, String(PlayState._score), "ChunkFive", 60, 0x123456); 
-			_score.x = 200 - _gameOver.width * .5; 
+			_score.x = Config.CENTERX - _gameOver.width * .5; 
 			_score.y = _gameOver.y + _score.width *.5; 
 			addChild(_score); 
 			
 			var backBtnTexture:Texture = Texture.fromBitmap(Assets.getImage("back"));  
 			_backButton= new Button(backBtnTexture, "");
-			_backButton.x = 200 - _backButton.width * .5; 
+			_backButton.x = Config.CENTERX - _backButton.width * .5; 
 			_backButton.y = _score.y + _backButton.height; 
 			_backButton.addEventListener(Event.TRIGGERED, onClickBack); 
 			addChild(_backButton); 

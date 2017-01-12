@@ -13,7 +13,7 @@ package gameObjects{
 		
 		public function Bird(name:String, params:Object=null){
 			super(name, params);
-			view = new Image(Texture.fromBitmap(Assets.getImage("bird")));
+			view = new Image(Texture.fromBitmap(Assets.getImage("topWall")));
 		}
 		
 		public function setBounds(bounds:Rectangle):void{

@@ -1,71 +1,48 @@
 package utils {
-	import flash.display.InteractiveObject;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.events.IEventDispatcher;
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	
-	public class Key{
-		private static var _itialized:Boolean = false; 
-		private static var _keys:Object = {}; 
-		private static var _dispatcher:EventDispatcher;
+	
+	public class Key {
 		
-		public static const FLY:uint = Keyboard.SPACE;
-		public static const PAUSE:uint = Keyboard.ESCAPE;
+		public static var DISPATCHER:EventDispatcher = new EventDispatcher();
 		
-		public function Key(){} //never call this because we will never create an instance of this class
+		private static var _initialized:Boolean = false;
+		private static var _keys:Object = {};
 		
-		public static function init(stage:Stage):void{
-			if (!_itialized){
-				_dispatcher = new EventDispatcher(); 
-				stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown, false, 0, true);
-				stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp, false, 0, true);
-				stage.addEventListener(Event.DEACTIVATE, onDeactivate, false, 0, true);
-				_itialized = true; 
+		public static var FLY:uint = Keyboard.SPACE;
+		public static var PAUSE:uint = Keyboard.ESCAPE;
+		public static var TEST:uint = Keyboard.D; 
+		public function Key() {}
+		
+		public static function init(stage:Stage):void {
+			if (!_initialized) {
+				stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+				stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+				stage.addEventListener(Event.DEACTIVATE, onDeactivate);
+				_initialized = true;
 			}
 		}
 		
-		public static function isDown(keyCode:uint):Boolean{
-			return Boolean(keyCode in _keys); 
+		public static function isDown(keyCode:uint):Boolean {
+			return (keyCode in _keys);
 		}
-		
-		public static function onKeyDown(e:KeyboardEvent):void{
-			//store key press
+				
+		private static function onKeyDown(e:KeyboardEvent):void {
+			DISPATCHER.dispatchEvent(new Event("" + e.keyCode));
 			_keys[e.keyCode] = true;
-			_dispatcher.dispatchEvent(e); 
 		}
 		
-		public static function onKeyUp(e:KeyboardEvent):void{
-			//delete /remove stored keypress
-			delete _keys[e.keyCode]
-			_dispatcher.dispatchEvent(e); 
+		private static function onKeyUp(e:KeyboardEvent):void {
+			delete _keys[e.keyCode];
 		}
 		
-		public static function onDeactivate(e:Event):void{
-			//clear all keypresses
-			_keys = {}; 
-		}
-		
-		
-		public static function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void{
-			_dispatcher.addEventListener(type, listener, useCapture, priority, useWeakReference);
-		}
-		
-		public static function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void{
-			_dispatcher.removeEventListener(type, listener, useCapture);
-		}
-		
-		public static function dispatchEvent(event:Event):Boolean{
-			return _dispatcher.dispatchEvent(event); 
-		}
-		
-		public static function hasEventListener(type:String):Boolean{
-			return _dispatcher.hasEventListener(type); 
-		}
-		
-		public static function willTrigger(type:String):Boolean{
-			return _dispatcher.willTrigger(type); 
+		public static function onDeactivate(e:Event):void {
+			_keys = {};
 		}
 	}
-}
+}	

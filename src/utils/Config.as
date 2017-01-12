@@ -14,9 +14,20 @@ package utils
 		
 		public function Config(){}
 		
+		//world info
+		public static const WORLDWIDTH:Number = 400; 
+		public static const WORLDHEIGHT:Number = 680 
+		public static const CENTERX:Number = 200; 
+		public static const CENTERY:Number = 340;
+		
+		//game object info
+		public static const BIRDWIDTH:Number = 30; 
+		public static const BIRDHEIGHT:Number = 45; 
+		public static const PIPEWIDTH:Number = 30;
+		public static const PIPEHEIGHT:Number = 600;
+		
 		public static const TO_RAD:Number = (Math.PI / 180); 
 		public static const TO_DEG:Number = (180 / Math.PI); 
-	
 		private static var _dispatcher:EventDispatcher = new EventDispatcher(); 
 		private static var _data:XML;
 		public static var _cache:Object = {}; 

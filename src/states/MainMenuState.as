@@ -11,6 +11,7 @@ package states{
 	import starling.display.Button;
 	import starling.events.Event;
 	import citrus.objects.CitrusSprite;
+	import utils.Config;
 	
 	public class MainMenuState extends StarlingState{
 		public function MainMenuState(){
@@ -20,20 +21,20 @@ package states{
 		override public function initialize():void{
 			super.initialize(); 
 			
-			var background:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: 400, height: 680});
+			var background:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: Config.WORLDWIDTH, height: Config.WORLDHEIGHT});
 			background.view = Assets.getImage("fbBackground");
 			add(background);
 			
 			var gameTitle:TextField;
 			gameTitle = new TextField(200, 200, "Flappy Bird", "ChunkFive", 40, 0xA0FF52);
-			gameTitle.x = 200 - gameTitle.width*.5;
-			gameTitle.y = 340 - 350;
+			gameTitle.x = Config.CENTERX - gameTitle.width*.5;
+			gameTitle.y = Config.CENTERY - 350;
 			addChild(gameTitle);
 			
 			var playBtnUpTexture:Texture = Texture.fromBitmap(Assets.getImage("play")); 
 			var playBtnDownTexture:Texture = Texture.fromBitmap(Assets.getImage("playhover")); 
 			var playButton:Button = new Button(playBtnUpTexture, "", playBtnDownTexture, playBtnDownTexture);
-			playButton.x = 200 - playButton.width * .5; 
+			playButton.x = Config.CENTERX - playButton.width * .5; 
 			playButton.y = gameTitle.y + playButton.height; 
 			playButton.addEventListener(Event.TRIGGERED, onClickPlay); 
 			addChild(playButton); 
@@ -42,7 +43,7 @@ package states{
 			var instructionBtnDownTexture:Texture = Texture.fromBitmap(Assets.getImage("instructionshover")); 
 			var instructionButton:Button = new Button(instructionBtnUpTexture, "", instructionBtnDownTexture, instructionBtnDownTexture); 
 			instructionButton.scale = .55;
-			instructionButton.x = 200 - instructionButton.width * .5; 
+			instructionButton.x = Config.CENTERX - instructionButton.width * .5; 
 			instructionButton.y = playButton.y + instructionButton.height + 150; 
 			instructionButton.addEventListener(Event.TRIGGERED, onClickInstruction);
 			addChild(instructionButton); 
