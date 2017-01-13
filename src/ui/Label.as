@@ -40,5 +40,4 @@ package ui{
 			this.setTextFormat(_format); 
 		}
 	}
-
 }

@@ -12,21 +12,25 @@ package states{
 	import starling.events.Event;
 	import citrus.objects.CitrusSprite;
 	import utils.Config;
+	import utils.SoundManager;
 	
 	public class MainMenuState extends StarlingState{
+		private var _titleScreenSFX:utils.SoundManager = new utils.SoundManager("./sounds/titlescreen.mp3");
+		
 		public function MainMenuState(){
 			super(); 
 		}
 		
 		override public function initialize():void{
 			super.initialize(); 
+			_titleScreenSFX.playSound();
 			
 			var background:CitrusSprite = new CitrusSprite("bg", {x: 0, y: 0, width: Config.WORLDWIDTH, height: Config.WORLDHEIGHT});
 			background.view = Assets.getImage("fbBackground");
 			add(background);
 			
 			var gameTitle:TextField;
-			gameTitle = new TextField(200, 200, "Flappy Bird", "ChunkFive", 40, 0xA0FF52);
+			gameTitle = new TextField(200, 200, "Flappy Bird", "ChunkFive", 55, Config.LIMEGREEN);
 			gameTitle.x = Config.CENTERX - gameTitle.width*.5;
 			gameTitle.y = Config.CENTERY - 350;
 			addChild(gameTitle);
@@ -50,10 +54,12 @@ package states{
 		}
 		
 		public function onClickPlay(e:Event):void{
+			_titleScreenSFX.stopSound();
 			CitrusEngine.getInstance().state = new PlayState();
 		}
 		
 		public function onClickInstruction(e:Event):void{ 
+			_titleScreenSFX.stopSound();
 			CitrusEngine.getInstance().state = new InstructionState();
 		}	
 	}

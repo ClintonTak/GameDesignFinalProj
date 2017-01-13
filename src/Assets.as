@@ -1,33 +1,14 @@
-package 
-{
+package {
 	import flash.display.Bitmap;
 	import starling.textures.Texture;
-	public class Assets
-	{
-		
-		// Embed the Atlas XML
-		[Embed(source="assets/sprites.xml",mimeType="application/octet-stream")]
-		public static const spritesXml:Class;
-		
-        // Embed the Atlas Texture:
-		[Embed(source="assets/sprites.png")]
-		public static const sprites:Class;
-		
-		// sounds
-		[Embed(source="assets/whoosh.mp3")]
-		public static const whoosh:Class;
-		
-		[Embed(source="assets/ding.mp3")]
-		public static const ding:Class;
-		
-		[Embed(source="assets/smack.mp3")]
-		public static const smack:Class;
+	import starling.textures.TextureAtlas;
+	public class Assets{	
 		
 		// font
 		[Embed(source = "assets/fonts/ChunkFive.otf", embedAsCFF = "false", fontFamily = "ChunkFive")]
 		public static const ChunkFive:Class; 
 		
-		// new stuff
+		//images
 		[Embed(source = "assets/images/botWall.png")]
 		public static const BotWall:Class;
 		[Embed(source = "assets/images/topWall.png")]
@@ -69,7 +50,6 @@ package
 				imgClass = BackButton;
 			}
 			return new imgClass() as Bitmap;
-			
 		}
 	}
 }

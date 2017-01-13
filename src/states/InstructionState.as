@@ -9,13 +9,12 @@ package states{
 	import Assets;
 	import citrus.objects.CitrusSprite;
 	import utils.Config;
-	public class InstructionState extends StarlingState
-	{
+	
+	public class InstructionState extends StarlingState{
 		private var _background:CitrusSprite;
 		private var _instructions:TextField;
 		private var _backButton:Button
-		public function InstructionState() 
-		{
+		public function InstructionState() {
 			super(); 
 		}
 		
@@ -26,8 +25,7 @@ package states{
 			_background.view = Assets.getImage("fbBackground");
 			add(_background);
 			
-			
-			_instructions = new TextField(300, 300, "The object of this game is to get as far as possible. \n\n Press space to make your bird fly up and let gravity do the rest. ", "ChunkFive", 20, 0x123456);
+			_instructions = new TextField(300, 300, "The object of this game is to stay in the game for as long as possible. \n Dodge the pipes, and collect points. \n Press space to make your bird fly up and let gravity do the rest. ", "ChunkFive", 20, 0x123456);
 			_instructions.x = Config.CENTERX - _instructions.width*.5;
 			_instructions.y = Config.CENTERY - 350;
 			addChild(_instructions);
@@ -54,7 +52,5 @@ package states{
 			removeChild(_instructions);
 			removeChild(_backButton);
 		}
-		
 	}
-
 }

@@ -1,14 +1,16 @@
 package gameObjects{
-	import citrus.objects.CitrusSprite;
-	import cmodule.AwayPhysics.CVoidTypemap;
+	import citrus.objects.NapePhysicsObject;
+	import nape.geom.Vec2;
+
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	import Assets;
 	import starling.textures.Texture;
 	import starling.display.Image;
 	
-	public class Bird extends CitrusSprite {
-		
+	import flash.geom.Rectangle;
+	
+	public class Bird extends NapePhysicsObject{
 		public var _bounds:Rectangle;
 		
 		public function Bird(name:String, params:Object=null){
@@ -24,9 +26,13 @@ package gameObjects{
 			super.destroy(); 
 		}
 		
+		public function fly():void{
+			var vector:Vec2 = new Vec2(0, -75);
+			_body.velocity.set(vector);
+		}
+		
 		override public function update(timeDelta:Number):void{
 			super.update(timeDelta);
 		}
 	}
-
 }

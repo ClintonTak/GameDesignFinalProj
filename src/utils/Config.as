@@ -21,13 +21,21 @@ package utils
 		public static const CENTERY:Number = 340;
 		
 		//game object info
-		public static const BIRDWIDTH:Number = 30; 
-		public static const BIRDHEIGHT:Number = 45; 
-		public static const PIPEWIDTH:Number = 30;
-		public static const PIPEHEIGHT:Number = 600;
+		public static const BIRDWIDTH:Number = 45; 
+		public static const BIRDHEIGHT:Number = 50; 
+		public static const WALLWIDTH:Number = 129;
+		public static const TOPWALLHEIGHT:Number = 651;
+		public static const BOTTOMWALLHEIGHT:Number = 387;
+		public static const HALFTOPWALLHEIGHT:Number = 325;
+		public static const HALFBOTTOMWALLHEIGHT:Number = 193;
+		public static const WALLBOUNDARYBOTY:Number = 400;
+		public static const WALLBOUNDARYTOPY:Number = 400;
+		public static const WALLBOUNDARYX:Number = 70;
 		
-		public static const TO_RAD:Number = (Math.PI / 180); 
-		public static const TO_DEG:Number = (180 / Math.PI); 
+		//colors
+		public static const LIMEGREEN:uint = 0xA0FF52; 
+		public static const BLUE:uint = 0x123456;
+		
 		private static var _dispatcher:EventDispatcher = new EventDispatcher(); 
 		private static var _data:XML;
 		public static var _cache:Object = {}; 

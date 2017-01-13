@@ -8,7 +8,8 @@ package {
 	import states.GameOverState;
 	import states.InstructionState;
     import starling.core.Starling;
-	[SWF(frameRate="60", width="400", height="680")]
+	
+	[SWF(frameRate = "60", width = "400", height = "680")]
 	public class Main extends StarlingCitrusEngine {
 		public static const MENU_STATE:Number = 0;
 		public static const PLAY_STATE:Number = 1;
@@ -21,16 +22,15 @@ package {
 			super();
 			Starling.handleLostContext = true; 
 		}
+		
 		override public function initialize():void {
 			setUpStarling(true);
 		}
-		
 		
 		override public function handleStarlingReady():void
 		{
 			state = new MainMenuState();
 			//state = new PlayState(); 
-			
 		}
 	}
 }
