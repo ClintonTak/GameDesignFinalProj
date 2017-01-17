@@ -26,16 +26,11 @@ package states {
 		private var _wall1bot:Wall;
 		private var _wall2top:Wall;
 		private var _wall2bot:Wall;
-		
-		// sets the Y position of the pipes
 		private var _wallYLoc:Number;
 	
 		//for bird
 		private var _bird:Bird
 		private var _birdBounds:Rectangle;
-		
-		// make the character fly
-		private var _velocity:Number = 0;
 		
 		//game stuff
 		private var _gameStarted:Boolean;
@@ -101,7 +96,6 @@ package states {
 			addChild(_scoreCounter);
 			_score = 0;
 			_gameStarted = true;
-			_velocity = -7;
 			}
 		
 		private function randomizeYLoc():void{

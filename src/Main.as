@@ -30,7 +30,6 @@ package {
 		override public function handleStarlingReady():void
 		{
 			state = new MainMenuState();
-			//state = new PlayState(); 
 		}
 	}
 }
